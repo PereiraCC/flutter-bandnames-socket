@@ -175,9 +175,19 @@ class _ShowGraph extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    this.bands.forEach((band) { 
-      dataMap.putIfAbsent(band.name, () => band.votes.toDouble());
-    });
+    if(bands.length > 0){
+      this.bands.forEach((band) { 
+        dataMap.putIfAbsent(band.name, () => band.votes.toDouble());
+      });
+    }
+    else{
+      dataMap.putIfAbsent('', () => 0);
+      dataMap.putIfAbsent('', () => 0);
+      dataMap.putIfAbsent('', () => 0);
+      dataMap.putIfAbsent('', () => 0);
+    }
+    
+    print(dataMap);
 
     return Container(
       width: double.infinity,
